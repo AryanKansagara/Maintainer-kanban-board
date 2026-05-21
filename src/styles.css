@@ -1,0 +1,243 @@
+:root {
+  font-family: "Segoe UI", "Inter", sans-serif;
+  color: #e7eef8;
+  background:
+    radial-gradient(circle at top left, rgba(53, 93, 158, 0.32), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(17, 116, 91, 0.24), transparent 24%),
+    #0b1220;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.shell {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  min-height: 100vh;
+}
+
+.sidebar {
+  padding: 28px;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(9, 15, 28, 0.75);
+  backdrop-filter: blur(16px);
+}
+
+.eyebrow {
+  margin: 0 0 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.75rem;
+  color: #8eb9ff;
+}
+
+.sidebar h1 {
+  margin: 0;
+  font-size: 2.3rem;
+}
+
+.lede {
+  color: #b8c4d7;
+  margin: 14px 0 24px;
+}
+
+.panel {
+  background: rgba(16, 25, 42, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 18px;
+  margin-bottom: 18px;
+}
+
+.panel h2 {
+  margin-top: 0;
+  font-size: 1rem;
+}
+
+.panel input,
+.task-creator input,
+.column-title,
+.task-title,
+.task-description,
+.task-meta input,
+.task-meta select {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  background: rgba(4, 10, 20, 0.8);
+  color: #eff6ff;
+  padding: 10px 12px;
+}
+
+.panel button,
+.task-creator button {
+  width: 100%;
+  margin-top: 10px;
+  border: 0;
+  border-radius: 12px;
+  padding: 10px 12px;
+  background: linear-gradient(135deg, #4f8cff, #42d6a4);
+  color: #07101d;
+  font-weight: 700;
+}
+
+.stats div {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  color: #b8c4d7;
+}
+
+.stats strong {
+  color: #ffffff;
+}
+
+.board-wrap {
+  overflow-x: auto;
+  padding: 28px;
+}
+
+.board {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  min-height: calc(100vh - 56px);
+}
+
+.column {
+  width: 320px;
+  flex: 0 0 320px;
+  background: rgba(15, 23, 38, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 22px;
+  padding: 16px;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.22);
+}
+
+.column.dragging,
+.task-card.dragging,
+.overlay {
+  opacity: 0.9;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+}
+
+.column-header {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.column-title {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.ghost-button,
+.icon-button {
+  border: 0;
+  background: rgba(255, 255, 255, 0.08);
+  color: #d8e5f8;
+  border-radius: 10px;
+  padding: 9px 12px;
+}
+
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 24px;
+}
+
+.task-card {
+  background: linear-gradient(180deg, rgba(23, 35, 57, 0.95), rgba(13, 21, 35, 0.98));
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 18px;
+  padding: 14px;
+}
+
+.task-topline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.priority {
+  font-size: 0.75rem;
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-weight: 700;
+}
+
+.priority-low {
+  background: rgba(87, 195, 145, 0.18);
+  color: #81efba;
+}
+
+.priority-medium {
+  background: rgba(255, 195, 87, 0.18);
+  color: #ffd37a;
+}
+
+.priority-high {
+  background: rgba(255, 112, 112, 0.18);
+  color: #ff9f9f;
+}
+
+.task-title {
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.task-description {
+  resize: vertical;
+  min-height: 84px;
+  margin-bottom: 10px;
+}
+
+.task-meta {
+  display: grid;
+  grid-template-columns: 1fr 110px;
+  gap: 10px;
+}
+
+.task-creator {
+  margin-top: 14px;
+}
+
+@media (max-width: 960px) {
+  .shell {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    border-right: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .board {
+    min-height: auto;
+  }
+}
